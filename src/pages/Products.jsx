@@ -29,7 +29,7 @@ const Products = () => {
         {products.map((product) => (
           <div key={product.id} className=" p-4 rounded shadow-xl bg-pink-200">
             <img 
-              src={`YOUR_STRAPI_BASE_URL${product.attributes.image?.data?.attributes?.url}`} 
+              src={product.attributes.image}
               alt={product.attributes.title} 
               className="w-full h-48 object-cover rounded mb-2"
             />

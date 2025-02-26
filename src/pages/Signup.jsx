@@ -1,7 +1,6 @@
 import { toast } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-
 import { useForm } from "react-hook-form";
 
 
@@ -22,6 +21,20 @@ const Signup = () => {
     mode: "onBlur",
   });
 
+  async function submitForm(user) {
+    try {
+      const response = await clinet.post("/auth/local/register" , user)
+      localStorage.setItem("token", response.data.jwt);
+      
+      toast.success("user added successfull", {
+        type: "success",
+      });
+    } catch (error) {
+      toast.error(error,{
+        type: "error",
+      });
+    }
+  }
 
 
   const formSubmit = ({username}) => {
@@ -50,6 +63,9 @@ const Signup = () => {
           </svg>
           <input type="text" className="grow" placeholder="Username"  {...register("username")} />
         </label>
+        {errors?.username?(
+          <span>{errors.username.message}</span>
+        ): null}
         <label className="input input-bordered flex items-center gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -63,6 +79,9 @@ const Signup = () => {
           </svg>
           <input type="text" className="grow" placeholder="Email"  {...register("email")} />
         </label>
+        {errors?.email ? (
+            <span className="text-error">{errors.email.message}</span>
+          ) : null}
         <label className="input input-bordered flex items-center gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -76,6 +95,9 @@ const Signup = () => {
           </svg>
           <input type="password" className="grow" {...register("password")} />
         </label>
+        {errors?.password?(
+          <span>{errors.password.message}</span>
+        ): null}
 
         <button type="submit" className="  rounded-xl p-2 w-20 bg-orange-200">SignUp</button>
       </form>
