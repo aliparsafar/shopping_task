@@ -27,12 +27,11 @@ const Login = () => {
 
 
   async function formSubmit(user) {
-    console.log(user);
+    
     try {
       const response = await axios.post("https://strapi-store-server.onrender.com/api/auth/local", user)
       const {status}= response
-      // localStorage.setItem("token", response.data.jwt);
-      // console.log("hiiii")
+      localStorage.setItem("token", response.data.jwt);
       toast.success(`login added successfull${status}`);
     } catch (error) {
       toast.error(error, {
@@ -46,9 +45,9 @@ const Login = () => {
     
       <div className="flex flex-col justify-center items-center min-h-screen">
 
-        <form action="" onSubmit={handleSubmit(formSubmit)}   className=" flex flex-col justify-center items-center shadow-xl w-100 min-h-scrren h-120 rounded-2xl bg-pink-100 gap-2">
+        <form action="" onSubmit={handleSubmit(formSubmit)}   className=" flex flex-col justify-center items-center shadow-xl w-100 min-h-scrren h-120 rounded-2xl bg-cyan-950 gap-2">
           <img src="./src/assets/logo.svg" alt="" className="w-50 h-50 ml-50 " />
-          <h4 className="text-2xl mb-5 mr-60">Login</h4>
+          <h4 className="text-2xl mb-5 mr-60 text-amber-50">Login</h4>
 
 
           <label className="input input-bordered flex items-center gap-2">
@@ -84,7 +83,7 @@ const Login = () => {
           <span>{errors.password.message}</span>
         ): null}
 
-          <button className="mt-5  rounded-xl p-2 w-20 bg-orange-200">Login</button>
+          <button className="mt-5  rounded-xl p-2 w-20 bg-amber-50">Login</button>
         </form>
         <ToastContainer />
       </div>

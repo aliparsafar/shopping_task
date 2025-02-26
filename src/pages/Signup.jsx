@@ -41,9 +41,9 @@ const Signup = () => {
   return (
     <div className="flex flex-col justify-center items-center min-h-screen">
 
-      <form action="" onSubmit={handleSubmit(formSubmit)} className=" flex flex-col justify-center items-center shadow-xl w-100 min-h-scrren h-120 rounded-2xl bg-pink-100 gap-2">
+      <form action="" onSubmit={handleSubmit(formSubmit)} className=" flex flex-col justify-center items-center shadow-xl w-100 min-h-scrren h-120 rounded-2xl bg-cyan-950 gap-2">
         <img src="./src/assets/logo.svg" alt="" className="w-50 h-50 ml-50 " />
-        <h4 className="text-2xl mb-5 mr-60">SingIn</h4>
+        <h4 className="text-2xl mb-5 mr-60 text-amber-50">SingIn</h4>
 
         <label className="input input-bordered flex items-center gap-2">
           <svg
@@ -92,7 +92,7 @@ const Signup = () => {
           <span>{errors.password.message}</span>
         ): null}
 
-        <button type="submit" className="  rounded-xl p-2 w-20 bg-orange-200">SignUp</button>
+        <button type="submit" className="  rounded-xl p-2 w-20 bg-amber-50">SignIn</button>
       </form>
       <ToastContainer />
     </div>

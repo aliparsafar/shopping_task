@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 const Navbar = () => {
   return (
-    <nav className="bg-pink-300 p-4 text-white flex justify-between items-center ">
+    <nav className="bg-cyan-950 p-4 text-white flex justify-between items-center ">
       <h1 className="bg-clip-text bg-linear-to-r text-transparent from-[#F97316] to-[#22C55E] text-2xl">Shopedia</h1>
       <div>
       <Link to="/products" className="hover:underline mr-5">Products</Link>

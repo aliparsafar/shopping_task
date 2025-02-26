@@ -7,6 +7,7 @@ import Products from "./pages/Products";
 
 const App = () => {
   return (
+    <div className="bg-gray-600">
     <Router>
       <Navbar />
       <Routes>
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/products" element={<Products />} />
       </Routes>
     </Router>
+    </div>
   );
 };
 
