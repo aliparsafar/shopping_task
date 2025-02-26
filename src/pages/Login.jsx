@@ -2,6 +2,8 @@ import { toast, ToastContainer } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
+import { client } from "../lib/axios";
+import axios from "axios";
 
 
 
@@ -25,32 +27,19 @@ const Login = () => {
 
 
   async function formSubmit(user) {
-    
+    console.log(user);
     try {
-      const response = await clinet.post("/api/auth/local", user)
-      localStorage.setItem("token", response.data.jwt);
-      console.log("hiiii")
-      toast.success("user added successfull", {
-        type: "success",
-      });
+      const response = await axios.post("https://strapi-store-server.onrender.com/api/auth/local", user)
+      const {status}= response
+      // localStorage.setItem("token", response.data.jwt);
+      // console.log("hiiii")
+      toast.success(`login added successfull${status}`);
     } catch (error) {
       toast.error(error, {
         type: "error",
       });
     }
   }
-
-
-  // const formSubmit = ({ username }) => {
-  //   console.log(username)
-  // }
-
-
-
-
-
-
-
 
 
   return (
