@@ -21,11 +21,11 @@ const Signup = () => {
     mode: "onBlur",
   });
 
-  async function submitForm(user) {
+  async function formSubmit(user) {
     try {
       const response = await clinet.post("/auth/local/register" , user)
       localStorage.setItem("token", response.data.jwt);
-      
+
       toast.success("user added successfull", {
         type: "success",
       });
@@ -37,9 +37,9 @@ const Signup = () => {
   }
 
 
-  const formSubmit = ({username}) => {
-    console.log(username)
-  }
+  // const formSubmit = ({username}) => {
+  //   console.log(username)
+  // }
 
 
 
